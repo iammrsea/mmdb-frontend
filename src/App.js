@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext, useEffect } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { RoutesWithLayout, LinearProgress, Alert } from 'components';
+import './assets/app.scss';
 import './App.css';
+import AppContext from 'store/context/context';
+import { getItems } from 'service/network.service';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const context = useContext(AppContext);
+	const {
+		setAuthUser,
+		updateCategoryList,
+		setLoading,
+		loading,
+		updateMarketList,
+		updateHasNext,
+		updateNextCursor,
+	} = context;
+	useEffect(() => {
+		setLoading(true);
+		getItems({ url: '/markets' })
+			.then((res) => {
+				updateMarketList(res.data.data);
+				updateHasNext(res.data.meta.hasNext);
+				updateNextCursor(res.data.meta.nextCursor);
+				const authUser = localStorage.getItem('mmdb_auth_user');
+				if (authUser) {
+					setAuthUser(JSON.parse(authUser));
+				}
+				return getItems({ url: '/categories' });
+			})
+			.then((catResponse) => {
+				setLoading(false);
+				// console.log('categories', catResponse);
+				updateCategoryList(catResponse.data);
+			})
+			.catch((error) => {
+				setLoading(false);
+				Alert({ message: error.message, color: 'red' });
+			});
+	}, []);
+
+	return (
+		<Router>
+			{loading && <LinearProgress />}
+			<RoutesWithLayout loading={loading} />
+		</Router>
+	);
 }
 
 export default App;

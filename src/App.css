@@ -1,38 +1,157 @@
-.App {
-  text-align: center;
+ul.sidenav.sidenav-fixed li.logo {
+  margin-bottom: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ckqJWj select {
+  display: inherit;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.login-label label {
+  color: #fff;
+  font-size: 19px;
+  top: -10px !important;
+
+}
+
+#register-form label {
+  color: #fff;
+  font-size: 16px;
+  top: -10px !important;
+}
+
+.login-label input {
+  background-color: #fff;
+  padding: 20px;
+}
+
+.login-btn {
+  color: #fff;
+  font-size: 20px;
+  border-radius: 10px;
+
+}
+
+.login-btn:hover {
+  background-color: #3f51b5;
+}
+
+.login {
+
+  background-image: url('./assets/img/wedoyourfarm.jpg');
+}
+
+.c-btn:hover {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+#root {
+  background: #fafafa;
+}
+
+/* .gIMaKV {
+
+  height: fit-content !important;
+
+} */
+
+
+.categories {
+  height: 100vh
+}
+
+.category-item:hover {
+  background-color: #eeeeee;
+  cursor: pointer;
+}
+
+
+
+.product-btn:hover {
+  background-color: #3f51b5;
+  color: #fff;
+}
+
+.delete-category:hover {
+  background-color: red;
+  color: #fff !important;
+}
+
+.delete-category {
+  color: red !important;
+}
+
+.active-route {
+  background-color: #271175;
+}
+
+::placeholder {
+  color: black;
+}
+
+.product-btn {
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+.delete-btn:hover {
+  background-color: inherit;
+}
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+
+  position: absolute;
+  opacity: initial;
+  pointer-events: initial;
+}
+
+.sidenav li>a.active {
+  color: #3f51b5;
+}
+
+.sidenav li>a>i.material-icons {
+  color: inherit;
+}
+
+.register-action-buttons-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.user-profile-detail-title {
+  font-size: 30px;
+  font-weight: 500;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#order-table span {
+  width: 100%;
+  /* text-align: center; */
+  font-size: 2.28rem;
+  color: #3f51b5 !important;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 766px) {
+  .register-action-buttons-container {
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 621px) {
+  .user-profile-detail-title {
+    font-size: 20px;
+  }
+
+  #order-table span {
+    font-size: 1.5rem;
   }
 }
