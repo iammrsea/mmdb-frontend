@@ -1,0 +1,9 @@
+#search {
+    border-bottom: solid 2px #fff;
+    color: #fff;
+    width: 330px
+}
+
+#search::placeholder {
+    color: #fff;
+}
